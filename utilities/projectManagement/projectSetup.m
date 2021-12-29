@@ -85,19 +85,6 @@ else
     end
 end
 clear slashIdx backupFile BackUpFlag CurrentFolder exportLocation filename
-%% Update Template Folder
-% In this section the path that contains templates for use by other projects is defined.
-myTemplate = Simulink.exportToTemplate(projObj, erase(projObj.Name, " "), ...
-                 'Group', 'Simulink', ...
-                 'Author', getenv('USERNAME'), ...
-                 'Description', projObj.Description, ...
-                 'Title', projObj.Name, ...
-                 'ThumbnailFile', projObj.RootFolder + "\AuxiliaryFunctions\ProjectManagement\TemplateThumbnailImage.png");
-
-% Move the newly created template to the communal templates folder
-movefile(myTemplate, userpath, 'f');
-
-clear myTemplate projObj
 %% Clean Up
 % clear up the workspace
 clear vars
