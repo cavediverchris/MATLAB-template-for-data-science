@@ -5,6 +5,7 @@
 
 %% Clear the workspace and command window
 % The workspace is cleared of all current variables and all windows are
+
 % closed this done to prevent any collisions with models or scripts that
 % operate on data in the base workspace.
 
@@ -17,6 +18,7 @@ close all
 % code generation files to be stored in a particular work directory so as
 % not to clutter the working folder.
 projObj = currentProject;
+
 
 % Check if the project settings have the work folder set
 fields = fieldnames(projObj);
@@ -48,11 +50,11 @@ else
         projObj.SimulinkCacheFolder = myCacheFolder;
         
     end
+
 end
 
 % Create the location for any files generated during build for code
 % generation.
-
 
 % Check if the project settings have the work folder set
 if ~any(contains(fields, "simulinkCodeGen"))
@@ -96,11 +98,13 @@ clear myCacheFolder myCodeGenFolder;
 disp('Back Up Process');
 
 % Set this flag to false to disable archiving
+
 runBackUp = true;
 
 % Define the location for export. 
 exportLocation = "C:\";
 exportLocation = fullfile(exportLocation, 'projectBackups');
+
 
 % Check that exportLocation is a valid path
 if exist(exportLocation, 'dir') == 0
@@ -108,6 +112,7 @@ if exist(exportLocation, 'dir') == 0
     % ACTION: create folder at exportLocation
     mkdir(exportLocation);
 end
+
 
 backupFile = projObj.Name + ...
                 "_backup_" + ...
@@ -126,6 +131,7 @@ elseif (exist(backupFile , 'file') == 0) && (runBackUp == true)
     
     export(projObj, backupFile, ...
         'ArchiveReferences', true);
+
     
     % Print message to screen.
     disp('... Back up completed.')
