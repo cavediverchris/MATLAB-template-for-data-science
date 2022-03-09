@@ -1,7 +1,9 @@
 %% Project Set Up
-% This script sets up the environment for the current MATLAB Project.
-% This script needs to be added to the Shortcuts to Run at Start to ensure
-% all the initialisation is conducted at project start.
+% When the MATLAB Project is first lauched, after completing the standard
+% MATLAB launch processes (e.g. setting up paths etc.) the MATLAB Project
+% will move onto running any scripts that are set to run at project start
+% up. This script offers a one-stop-shop to set routines to run during
+% start up. 
 
 %% Clear the workspace and command window
 % The workspace is cleared of all current variables and all windows are
@@ -26,7 +28,7 @@ fields = fieldnames(projObj);
 if ~any(contains(fields, "simulinkCacheFolder"))
     % CASE: the project object does not have a definition of cache folder
     % ACTION: TODO
-    disp(["Simulink Cache Property does not exist in: " + projObj.Name])
+    disp("Simulink Cache Property does not exist in: " + projObj.Name)
 else
     % Create the location of slprj to be the "work" folder of the current project:
     myCacheFolder = fullfile(projObj.RootFolder, 'simulinkCacheFolder');
@@ -60,7 +62,7 @@ end
 if ~any(contains(fields, "simulinkCodeGen"))
     % CASE: the project object does not have a definition of cache folder
     % ACTION: TODO
-    disp(["Simulink Code Gen Property does not exist in: " + projObj.Name])
+    disp("Simulink Code Gen Property does not exist in: " + projObj.Name)
 else
     % Create the location of slprj to be the "work" folder of the current project:
     myCodeGenFolder = fullfile(projObj.RootFolder, 'simulinkCodeGen');
