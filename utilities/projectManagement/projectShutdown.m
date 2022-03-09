@@ -1,4 +1,7 @@
 %% Project Shutdown
+%   The projectShutdown script is designed to run on Project Close to clean
+%   up (remove) the local customisations made to the MATLAB Interactive
+%   Development Environment (IDE).  
 %
 %% Environment Teardown Processes
 % Clear up workspace for dialog message
@@ -14,7 +17,3 @@ disp('... Cleared workspace');
 % Close any open data dictionaries
 Simulink.data.dictionary.closeAll;
 disp('... Closed data dictionary(s)');
-
-% Reset the location where generated code and other temporary files are
-% created (slprj) to the default:
-Simulink.fileGenControl('reset');
